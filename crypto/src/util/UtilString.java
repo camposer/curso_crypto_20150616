@@ -8,4 +8,12 @@ public class UtilString {
 		return Base64.getEncoder().encodeToString(cipherText);
 	}
 
+	public static String getHex(byte[] digestText) {
+		StringBuffer result = new StringBuffer();
+		for (byte b : digestText) {
+		    result.append(String.format("%02X", b));
+		}
+		return result.toString();
+	}
+
 }
