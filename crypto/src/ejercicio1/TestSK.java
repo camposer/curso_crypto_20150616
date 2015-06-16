@@ -1,8 +1,5 @@
 package ejercicio1;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
 import java.security.Key;
 
 import javax.crypto.Cipher;
