@@ -10,20 +10,20 @@ import javax.crypto.spec.SecretKeySpec;
 
 import util.UtilString;
 
-public class CipherTest {
+public class TestSK {
 	private static final String ALGORITMO = "AES";
 	private static final String PASSPHRASE = "123456";
 	private static final String SALT = "123";
 	private Cipher cipher;
 	private Key key;
 
-	public CipherTest() throws Exception {
+	public TestSK() throws Exception {
 		this.cipher = Cipher.getInstance(ALGORITMO);
 		this.key = getKey1(PASSPHRASE);
 		System.out.println("key = " + UtilString.getBase64(this.key.getEncoded()));
 	}
 
-	private Key getKey(String passphrase) throws Exception {
+	private Key getKey() throws Exception {
 		return KeyGenerator.getInstance(ALGORITMO).generateKey();
 	}
 	
@@ -44,7 +44,7 @@ public class CipherTest {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new CipherTest().iniciar();
+		new TestSK().iniciar();
 	}
 
 	private void iniciar() throws Exception {
@@ -63,6 +63,6 @@ public class CipherTest {
 
 	private byte[] cifrar(String string) throws Exception {
 		cipher.init(Cipher.ENCRYPT_MODE, key);
-		return cipher.doFinal("Hola mundo".getBytes());
+		return cipher.doFinal(string.getBytes());
 	}
 }
