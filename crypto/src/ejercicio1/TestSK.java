@@ -8,6 +8,7 @@ import java.security.Key;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 
+import util.UtilArchivo;
 import util.UtilString;
 
 public class TestSK {
@@ -35,19 +36,11 @@ public class TestSK {
 	private void iniciar() throws Exception {
 		System.out.println("Cifrando quijote.txt");
 
-		byte[] cipherText = cifrar(leerArchivo(ARCHIVO_ENTRADA));
-		escribirArchivo(cipherText, ARCHIVO_CIFRADO);
+		byte[] cipherText = cifrar(UtilArchivo.leerArchivo(ARCHIVO_ENTRADA));
+		UtilArchivo.escribirArchivo(cipherText, ARCHIVO_CIFRADO);
 
-		byte[] plainText = descifrar(cipherText);
-		escribirArchivo(plainText, ARCHIVO_SALIDA);
-	}
-
-	private void escribirArchivo(byte[] text, String archivoSalida) throws Exception {
-		Files.write(new File(archivoSalida).toPath(), text, StandardOpenOption.TRUNCATE_EXISTING);
-	}
-
-	private byte[] leerArchivo(String archivo) throws Exception {
-		return Files.readAllBytes(new File(ARCHIVO_ENTRADA).toPath());
+		byte[] plainText = descifrar(UtilArchivo.leerArchivo(ARCHIVO_CIFRADO));
+		UtilArchivo.escribirArchivo(plainText, ARCHIVO_SALIDA);
 	}
 
 	private byte[] descifrar(byte[] cipherText) throws Exception {
