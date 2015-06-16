@@ -7,7 +7,8 @@ import java.nio.file.StandardOpenOption;
 public class UtilArchivo {
 
 	public static void escribirArchivo(byte[] text, String archivo) throws Exception {
-		Files.write(new File(archivo).toPath(), text, StandardOpenOption.TRUNCATE_EXISTING);
+		Files.deleteIfExists(new File(archivo).toPath());
+		Files.write(new File(archivo).toPath(), text, StandardOpenOption.CREATE_NEW);
 	}
 
 	public static byte[] leerArchivo(String archivo) throws Exception {

@@ -9,7 +9,7 @@ import javax.crypto.Cipher;
 import util.UtilString;
 
 public class TestPK {
-	private static final String ALGORITMO = "RSA";
+	private static final String ALGORITMO = "RSA"; // http://docs.oracle.com/javase/7/docs/technotes/guides/security/StandardNames.html#impl
 	private Cipher cipher;
 	private Key publicKey;
 	private Key privateKey;
@@ -20,7 +20,7 @@ public class TestPK {
 	}
 
 	private void generateKeys() throws Exception {
-		KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+		KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(ALGORITMO);
 		KeyPair keyPair = keyPairGenerator.generateKeyPair();
 		this.publicKey = keyPair.getPublic();
 		this.privateKey = keyPair.getPrivate();
