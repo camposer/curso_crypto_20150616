@@ -71,6 +71,8 @@ Enlaces
 	http://stackoverflow.com/questions/8703234/accesscontroller-usage
 	- New Security Mechanisms in Sun's Java 2
 	http://www.securingjava.com/chapter-three/chapter-three-7.html
+	- Signing and Verifying JAR Files
+	https://docs.oracle.com/javase/tutorial/deployment/jar/signindex.html
 
 - SSL y JRMIS
 	- Infografía Handshake SSL
