@@ -1,6 +1,8 @@
 package ejercicio4.rmi;
 
 import java.rmi.RemoteException;
+import java.rmi.server.RMIClientSocketFactory;
+import java.rmi.server.RMIServerSocketFactory;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
@@ -8,18 +10,24 @@ import ejercicio4.model.Persona;
 import ejercicio4.service.PersonaService;
 import ejercicio4.service.PersonaServiceFactory;
 
-public class PersonaServantImpl 
+public abstract class PersonaServantBase
 		extends UnicastRemoteObject 
 		implements PersonaServant {
 	private static final long serialVersionUID = 5032335132359126610L;
 
 	private PersonaService personaService;
 	
-	public PersonaServantImpl() throws RemoteException {
+	public PersonaServantBase() throws RemoteException {
 		super();
 		personaService = PersonaServiceFactory.createPersonaService();
 	}
 	
+	public PersonaServantBase(RMIClientSocketFactory clientSocketFactory,
+			RMIServerSocketFactory serverSocketFactory) throws RemoteException {
+		super(0, clientSocketFactory, serverSocketFactory);
+		personaService = PersonaServiceFactory.createPersonaService();
+	}
+
 	@Override
 	public void agregarPersona(Persona p) throws RemoteException {
 		personaService.agregarPersona(p);

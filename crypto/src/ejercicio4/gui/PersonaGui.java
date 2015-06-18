@@ -8,6 +8,10 @@ import java.util.Scanner;
 import ejercicio4.model.Persona;
 import ejercicio4.rmi.PersonaServant;
 
+/**
+ * -Djavax.net.ssl.keyStore=file/keystore.jks -Djavax.net.ssl.keyStorePassword=123456
+ * -Djavax.net.ssl.truestStore=file/keystore.jks -Djavax.net.ssl.trustStorePassword=123456
+ */
 public class PersonaGui {
 	private Scanner scanner;
 	private PersonaServant personaServant;
